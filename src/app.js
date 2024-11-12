@@ -4,15 +4,39 @@ const sequelize = require('./config/database');
 const userRoutes = require('./routes/userRoutes');
 const path = require('path');
 require('dotenv').config();
+const multer = require('multer');
 
-const app = express();
+const app = express(); // Definir o app antes de usá-lo
 const PORT = 3000;
 
+// Limitar o tamanho do corpo da requisição (aqui está definido para 10MB)
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// Configuração do Multer para upload de arquivos
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Pasta onde os arquivos serão armazenados
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // Limitar o tamanho do arquivo para 10MB
+});
+
+// Usar o middleware no endpoint de upload
+app.post('/upload', upload.single('avatar'), (req, res) => {
+  res.send('Arquivo enviado com sucesso!');
+});
+
+// Middleware para processar rotas de usuários
 app.use(bodyParser.json());
-app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'src', 'views')));
-
 app.use('/api', userRoutes);
 
 // Rota para a página inicial

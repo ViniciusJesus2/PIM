@@ -160,8 +160,74 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+// Lógica para editar perfil do usuário
+const editUserProfile = async (req, res) => {
+  const { nome_completo, resumo, localizacao, contato, redes_sociais, avatar } = req.body;
+
+  try {
+    // Verificar se o token foi passado na requisição
+    const token = req.headers['authorization']?.split(' ')[1]; // Token no formato Bearer <token>
+    
+    if (!token) {
+      return res.status(401).json({ message: 'Token não fornecido.' });
+    }
+
+    // Verificar a validade do token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Substitua por sua chave secreta
+    const userId = decoded.userId; // A chave 'userId' é decodificada do token
+
+    // Buscar o usuário com o id do token
+    const user = await User.findOne({ where: { id: userId } });
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+
+    // Verificar qual perfil o usuário tem e atualizar
+    if (user.type_user_id === 3) { // Profissional
+      const userProfissionalProfile = await UserProfissionalProfile.findOne({ where: { user_id: user.id } });
+      if (userProfissionalProfile) {
+        // Atualizar perfil profissional
+        await userProfissionalProfile.update({
+          nome_completo,
+          resumo,
+          localizacao,
+          contato,
+          redes_sociais: JSON.stringify(redes_sociais),
+          avatar,
+        });
+        return res.status(200).json({ message: 'Perfil profissional atualizado com sucesso!' });
+      } else {
+        return res.status(404).json({ message: 'Perfil profissional não encontrado.' });
+      }
+    } else if (user.type_user_id === 2) { // Empresa
+      const userEmpresaProfile = await UserEmpresaProfile.findOne({ where: { user_id: user.id } });
+      if (userEmpresaProfile) {
+        // Atualizar perfil de empresa
+        await userEmpresaProfile.update({
+          nome_completo,
+          resumo,
+          localizacao,
+          contato,
+          redes_sociais: JSON.stringify(redes_sociais),
+          avatar,
+        });
+        return res.status(200).json({ message: 'Perfil de empresa atualizado com sucesso!' });
+      } else {
+        return res.status(404).json({ message: 'Perfil de empresa não encontrado.' });
+      }
+    } else {
+      return res.status(400).json({ message: 'Tipo de usuário inválido.' });
+    }
+  } catch (error) {
+    console.error('Erro ao atualizar perfil:', error);
+    return res.status(500).json({ message: 'Erro ao atualizar perfil.' });
+  }
+};
+
+
 module.exports = {
   createUser,
   loginUser,
-  getUserProfile
+  getUserProfile,
+  editUserProfile
 };

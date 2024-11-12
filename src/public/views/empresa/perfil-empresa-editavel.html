@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <style>
+        /* Estilo para as mensagens */
+        .message {
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Estilo para os campos editáveis */
+        .editable {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Estilo para a imagem de avatar */
+        #userAvatarEmpresa {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para o campo de upload de imagem */
+        #fileInput {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfil Editável</h1>
+    
+    <!-- Área para mensagens de sucesso ou erro -->
+    <div id="message" class="message" style="display: none;"></div>
+
+    <div id="profileInfo">
+        <p><strong>Nome da Empresa:</strong> <input type="text" id="userNomeEmpresa" class="editable"></p>
+        <p><strong>Resumo da Empresa:</strong> <textarea id="userResumoEmpresa" class="editable"></textarea></p>
+        <p><strong>Localização:</strong> <input type="text" id="userLocalizacaoEmpresa" class="editable"></p>
+        <p><strong>Contato:</strong> <input type="text" id="userContatoEmpresa" class="editable"></p>
+        <p><strong>Redes Sociais:</strong> <textarea id="userRedesSociaisEmpresa" class="editable"></textarea></p>
+        
+        <!-- Avatar do usuário -->
+        <img id="userAvatarEmpresa" alt="Avatar">
+        <br>
+        
+        <!-- Campo para alteração do avatar -->
+        <input type="file" id="fileInput" accept="image/*">
+        <br>
+        
+        <button id="saveButton">Salvar</button>
+        <button id="logoutButton">Sair</button>
+    </div>
+
+    <script src="/js/perfil-empresa-editavel.js"></script>
+
+</body>
+</html>
