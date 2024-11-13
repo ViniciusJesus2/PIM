@@ -129,34 +129,30 @@ CREATE TABLE vagas (
     vaga_id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descricao TEXT NOT NULL,
-    empresa_id INT NOT NULL,
-    empresa_nome VARCHAR(255) NOT NULL,
-    localizacao VARCHAR(255),
-    salario DECIMAL(10, 2),
+    empresa_id INT NOT NULL, -- ID da empresa que criou a vaga
+    empresa_nome VARCHAR(255) NOT NULL, -- Nome da empresa
+    localizacao VARCHAR(255), 
+    salario DECIMAL(10, 2), 
     tipo_contrato ENUM('CLT', 'PJ', 'Freelancer', 'Estágio') NOT NULL,
     nivel_experiencia ENUM('Júnior', 'Pleno', 'Sênior') NOT NULL,
-    requisitos TEXT,
-    diferenciais TEXT,
-    beneficios TEXT,
-    data_postagem DATE NOT NULL,
-    data_validade DATE,
     status ENUM('Aberta', 'Fechada') DEFAULT 'Aberta',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMP NULL
+    deleted_at TIMESTAMP NULL,
+    FOREIGN KEY (empresa_id) REFERENCES Users(id) ON DELETE CASCADE -- Relacionando a empresa à tabela Users
 );
 
 -- Inscrições a vaga
 CREATE TABLE inscricoes (
     inscricao_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    vaga_id INT NOT NULL,
+    user_id INT NOT NULL, -- ID do usuário que se inscreveu (profissional)
+    vaga_id INT NOT NULL, -- ID da vaga na qual o usuário se inscreveu
     status_inscricao ENUM('em andamento', 'processo seletivo', 'encerrado', 'aprovado') DEFAULT 'em andamento',
     data_inscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (vaga_id) REFERENCES vagas(vaga_id),
-    UNIQUE (user_id, vaga_id), -- Garante que o usuário não se inscreva duas vezes na mesma vaga
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (user_id, vaga_id), -- Garantindo que o mesmo usuário não possa se inscrever mais de uma vez na mesma vaga
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NULL
 );

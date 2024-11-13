@@ -1,12 +1,20 @@
 const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
+
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database');
 const userRoutes = require('./routes/userRoutes');
+const vagaRoutes = require('./routes/vagasRoutes');
+const inscricaoRoutes = require('./routes/inscricaoRoutes');
 const path = require('path');
+
 require('dotenv').config();
-const multer = require('multer');
 
 const app = express(); // Definir o app antes de usá-lo
+app.use(cors());
+app.use(bodyParser.json());
+
 const PORT = 3000;
 
 // Limitar o tamanho do corpo da requisição (aqui está definido para 10MB)
@@ -37,6 +45,9 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'src', 'views')));
+
+app.use('/api', vagaRoutes);
+app.use('/api', inscricaoRoutes);
 app.use('/api', userRoutes);
 
 // Rota para a página inicial
