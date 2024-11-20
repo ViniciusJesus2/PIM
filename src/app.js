@@ -12,8 +12,14 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express(); // Definir o app antes de usá-lo
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.json());
+
+app.use(cors({
+    origin: 'http://localhost:3000', // Substitua pelo endereço do frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Authorization', 'Content-Type']
+}));
 
 const PORT = 3000;
 

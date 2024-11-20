@@ -44,6 +44,7 @@ const User = sequelize.define('User', {
   },
   logo: Sequelize.STRING,
 }, {
+  tableName: 'users', 
   timestamps: true,
   createdAt: 'created_at',
   updatedAt: 'updated_at',
@@ -111,6 +112,18 @@ User.hasOne(UserEmpresaProfile, { foreignKey: 'user_id' });  // Relacionando Use
 
 UserProfissionalProfile.belongsTo(User, { foreignKey: 'user_id' });  // Relacionando UserProfissionalProfile com User
 UserEmpresaProfile.belongsTo(User, { foreignKey: 'user_id' });  // Relacionando UserEmpresaProfile com User
+
+User.belongsTo(TypeUser, { foreignKey: 'type_user_id', as: 'typeUser' });
+
+User.hasOne(UserProfissionalProfile, {
+  foreignKey: 'user_id', // A chave estrangeira que conecta os dois modelos
+  as: 'profile', // Alias que você vai usar na consulta
+});
+
+UserProfissionalProfile.belongsTo(User, {
+  foreignKey: 'user_id', // A chave estrangeira na tabela de perfil
+});
+
 
 // Exportando os modelos
 module.exports = {

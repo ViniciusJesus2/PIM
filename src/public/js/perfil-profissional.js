@@ -62,3 +62,4 @@ logoutButton.addEventListener('click', () => {
     localStorage.removeItem('token');
     window.location.href = '../login/login.html';
 });
+

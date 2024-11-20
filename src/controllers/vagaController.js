@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { Vaga } = require('../models/vagas');
+const  Vaga = require('../models/vagas');
 const { UserEmpresaProfile, UserProfissionalProfile } = require('../models/user');
 const { Op } = require('sequelize');
 

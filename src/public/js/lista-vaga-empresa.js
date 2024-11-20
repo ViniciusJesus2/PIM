@@ -50,7 +50,7 @@ function editarVaga(vagaId) {
 
 // Função para redirecionar para a página de visualização de candidatos
 function verCandidatos(vagaId) {
-    window.location.href = `/views/vaga/candidatos-vaga.html?id=${vagaId}`;
+    window.location.href = `/views/inscricoes/candidatos-vaga.html?id=${vagaId}`;
 }
 
 // Chama a função ao carregar a página

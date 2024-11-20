@@ -48,6 +48,7 @@ const Vaga = sequelize.define('Vaga', {
     defaultValue: 'Aberta',
   },
 }, {
+  tableName: 'vagas', // Nome da tabela no banco
   timestamps: true,
   paranoid: true, 
   createdAt: 'created_at',
@@ -55,7 +56,4 @@ const Vaga = sequelize.define('Vaga', {
   deletedAt: 'deleted_at',
 });
 
-module.exports = {
-  Vaga,
-  sequelize
-};
+module.exports = Vaga;

@@ -1,4 +1,3 @@
-// middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res, next) => {
@@ -26,3 +25,4 @@ const authenticateToken = (req, res, next) => {
 };
 
 module.exports = authenticateToken;
+

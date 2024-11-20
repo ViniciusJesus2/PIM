@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const { User } = require('./user'); // Importa o modelo User
+const Vaga = require('./vagas'); // Importa o modelo Vaga
 
 const Inscricao = sequelize.define('Inscricao', {
   inscricao_id: {
@@ -11,7 +13,7 @@ const Inscricao = sequelize.define('Inscricao', {
     type: DataTypes.INTEGER,
     allowNull: false,    
     references: {
-      model: 'User',
+      model: 'users', // Nome da tabela no banco de dados
       key: 'id'
     }
   },
@@ -19,7 +21,7 @@ const Inscricao = sequelize.define('Inscricao', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'Vaga',
+      model: 'vagas', // Nome da tabela no banco de dados
       key: 'id'
     }
   },
@@ -40,6 +42,7 @@ const Inscricao = sequelize.define('Inscricao', {
   deletedAt: 'deleted_at',
 });
 
-module.exports = {
-  Inscricao,
-}
+Inscricao.belongsTo(User, { as: 'user', foreignKey: 'user_id' });
+Inscricao.belongsTo(Vaga, { as: 'vaga', foreignKey: 'vaga_id' });
+
+module.exports = Inscricao;
