@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #5968BC;
+}
+
+#title_vaga {
+    text-align: center;
+    background-color: #231942;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+table, th, td {
+    border: none;
+    border-radius: 10px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+.status {
+    font-weight: bold;
+    color: green;
+}
+.status.fechada {
+    color: red;
+}

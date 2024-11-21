@@ -5,40 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Vagas da Empresa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .status {
-            font-weight: bold;
-            color: green;
-        }
-        .status.fechada {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="css/lista_vaga_empresa.css">
 </head>
 <body>
     <div class="container">
-        <h1>Lista de Vagas Criadas pela Empresa</h1>
+        <h1 id="title_vaga">Lista de Vagas Criadas pela Empresa</h1>
         <table>
             <thead>
                 <tr>

@@ -1,0 +1,68 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #5968BC;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title_vaga {
+    text-align: center;
+    background-color: #231942;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#form-editar-vaga{
+    background-color: white;
+    margin-top: 50px ;
+    width: 800px;
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #231942;
+}
+
+ .form-group {
+    margin-bottom: 15px;
+}
+
+#form-editar-vaga label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#form-editar-vaga input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #5968BC;
+    border: none;
+    color: #FFF;
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-radius: 5px;
+    margin-left: 5px;
+}

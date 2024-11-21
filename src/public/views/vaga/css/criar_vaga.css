@@ -1,0 +1,81 @@
+/* Estilos básicos para a página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #5968BC;
+}
+
+#title_vaga {
+    text-align: center;
+    background-color: #231942;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#createJobForm {
+    margin-top: 50px ;
+    width: 800px;
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #231942;
+}
+
+#createJobForm div {
+    margin-bottom: 15px;
+}
+
+#createJobForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#createJobForm input, textarea, select{
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #5968BC;
+    border: none;
+    color: #FFF;
+}
+
+button {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;  
+    background-color: #231942;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+button:hover {
+    background-color: #38276b
+}
+ 
+#reset {
+    margin-left: 10px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+}

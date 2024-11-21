@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #5968BC;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+#title_vaga {
+    color: #333;
+    text-align: center;
+    color: #FFF;
+    background-color: #231942;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.vaga-detalhes {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.vaga-info {
+    margin: 10px 0;
+}
+
+.vaga-info strong {
+    display: inline-block;
+    width: 150px;
+    color: #333;
+}
+
+.btn-voltar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #231942;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-voltar:hover {
+    background-color: #38276b;
+}
